@@ -1,196 +1,224 @@
 
-$(function () {
+// pre loader page
+const prLoaderPage = () => {
+  const preLoader = document.querySelector(".preloader");
+  window.addEventListener("load", () => {
+    preLoader.style.display = "none";
+  });
+};
+prLoaderPage();
 
-    $("body").css("overflow", "hidden");
-    // Show Page Loading And Hide
-    $('.loading-container').each(function () {
-        if ($(this).is(':visible')) {
-            $('.loading-container').delay(5000).fadeOut(100, function () {
-                $('.loading-container').css({
-                    display: 'none'
-                });
-                $('.all-element').fadeIn(100, function () {
-                    $("body").css("overflow", "auto");
-                    $('.all-element').css({ display: 'block' });
-                    // run function typer
-                    typerFunc();
-                });
-            });
-
-        }
-    });
-
-
-    //   animate scroll from sections on click
-    $(".ul-nav li").on("click", function () {
-        $("body,html").animate({
-            scrollTop: $('#' + $(this).data('offset')).offset().top
-        }, 500);
-
-    })
-    // add class to active item section 
-    $(".ul-nav li").on('click', function () {
-        $(".ul-nav li").removeClass("active");
-        $(this).addClass("active");
-        $(".ul-nav span path").removeClass("active-svg");
-        $(this).siblings().children().children().addClass("active-svg");
-    });
-
-
-    // fix add class active in home
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > $("main").offset().top - 20) {
-            $(".ul-nav li").removeClass("active");
-            $(".ul-nav li.home").addClass("active");
-            $(".ul-nav span path").removeClass("active-svg");
-            $(".ul-nav li.home").siblings().children().children().addClass("active-svg");
-
-        } else {
-            $(".ul-nav li.home").removeClass("active");
-
-        }
-    })
-    // scroll window to catch section
-    $(window).scroll(function () {
-        $(".section").each(function () {
-            if ($(window).scrollTop() > $(this).offset().top - 20) {
-                var sectionId = $(this).attr("id");
-                $(".ul-nav li").removeClass("active");
-                $(".ul-nav span path").removeClass("active-svg");
-                var storgeDate = $('.ul-nav li[data-offset="' + sectionId + '"]')
-                $(storgeDate).addClass('active');
-                $(storgeDate).siblings().children().children().addClass("active-svg");
-            }
-        })
-    });
-
-    // toggle show  hide heder
-    var lineOne = $(".line-one");
-    var lineTwo = $(".line-two");
-    var lineThree = $(".line-three");
-    $(".bullets-container").on("click", function () {
-        if ($(lineTwo).hasClass("visible")) {
-            $("header").animate({ left: "0px" }, 100);
-            $(lineTwo).removeClass("visible").addClass("hidden");
-            $(lineOne).addClass("rotate-plus");
-            $(lineThree).addClass("rotate-minus");
-        }
-        else {
-            $("header").animate({ left: "-300px" }, 100);
-            $(lineTwo).removeClass("hidden").addClass("visible");
-            $(lineOne).removeClass("rotate-plus");
-            $(lineThree).removeClass("rotate-minus");
-        }
-    });
-
-    // change mode 
-    var body = $("body");
-    var containerToggle = $(".toggle");
-    var toggle = $(".toggle span");
-
-    $(containerToggle).on("click", function () {
-        if ($(body).hasClass("dark")) {
-            $(body).addClass("light").removeClass("dark");
-            $(toggle).animate({ left: "22px" }, 50);
-
-        } else {
-            $(body).addClass("dark").removeClass("light");
-            $(toggle).animate({ left: "0" }, 50);
-
-        }
-    });
-
-    // run animation progress bar 
-    $(window).scroll(function () {
-        if ($(window).scrollTop() >= $("#skills").offset().top - 300) {
-            progressAnimation()
-        }
-    })
-
-    //show item to hover projects
-    $(".my-projects").hover(function () {
-        $(this).find("a").animate({ bottom: "0px" }, 50);
-    }, function () {
-        $(this).find("a").animate({ bottom: "-40px" }, 50);
-    });
-
-    /** click Scrolling smooth */
-
-    $('.btn-top').on('click', function () {
-        $("html,body").animate({
-            scrollTop: 0
-        }, 2000);
-    });
-    //Show Icon Scrolling
-
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > 1000) {
-            $('.btn-top').fadeIn(300)
-        }
-        else {
-            $('.btn-top').fadeOut(300)
-        }
-    })
-
-
-
-    // create typer function
-    function typerFunc() {
-        let theText = $('.typer').data('text'),
-            theTextLength = theText.length,
-            n = 0;
-        theTyper = setInterval(function () {
-            $('.typer').each(function () {
-                $(this).html($(this).html() + theText[n]);
-            });
-            n++;
-            if (n >= theTextLength) {
-                clearInterval(theTyper);
-            }
-        }, 200);
-    }
-
-    // animate progress bar 
-    function progressAnimation() {
-        $(".progress span").each(function () {
-            $(this).animate({ width: $(this).data("progress") }, 1000)
-        })
-    }
+// typed js 
+let typed = new Typed('.typer', {
+  strings: ['Front End Developer.' , 'Freelancer.'],
+  typeSpeed:50,
+  backSpeed:40,
+  loop:true
 });
 
+// show list icon  sidebar in mobile
+const showListSide = () => {
+  const lineOne = document.querySelector(".line-one"),
+    lineTwo = document.querySelector(".line-two"),
+    lineThree = document.querySelector(".line-three"),
+    bulletsContainer = document.querySelector(".bullets-container"),
+    header = document.querySelector("header");
 
+  bulletsContainer.addEventListener("click", () => {
+    if (lineTwo.classList.contains("visible")) {
+      header.style.left = "0px";
+      lineTwo.classList.remove("visible");
+      lineTwo.classList.add("hidden");
+      lineOne.classList.add("rotate-plus");
+      lineThree.classList.add("rotate-minus");
+    } else {
+      header.style.left = "-300px";
+      lineTwo.classList.remove("hidden");
+      lineTwo.classList.add("visible");
+      lineOne.classList.remove("rotate-plus");
+      lineThree.classList.remove("rotate-minus");
+    }
+  });
+};
+showListSide();
 
+// handle scrolling  and add active in the li section
+const handleSecionScrolling = () => {
+  const sections = document.querySelectorAll(".section");
 
-const form = document.getElementById("my-form");
-async function handleSubmit(event) {
+  window.addEventListener("scroll", () => {
+    const scrollPostion = document.documentElement.scrollTop;
+    sections.forEach((section) => {
+      // check scroll postion and section postion
+      if (
+        scrollPostion >= section.offsetTop - 50 &&
+        scrollPostion < section.offsetTop + section.offsetHeight
+      ) {
+        let cureentId = section.getAttribute("id");
+        removeAllClassActive();
+        addClassActive(cureentId);
+      }
+    });
+  });
+
+  // remove all clase active
+  const removeAllClassActive = function () {
+    let li = document.querySelectorAll(".ul-nav li");
+    li.forEach((li) => {
+      li.classList.remove("active");
+      li.parentElement.firstElementChild.firstElementChild.firstElementChild.classList.remove(
+        "active-svg"
+      );
+    });
+  };
+  // add  active class in this ele
+  const addClassActive = function (id) {
+    let li = document.querySelectorAll(".ul-nav li");
+    li.forEach((li) => {
+      if (li.getAttribute("data-offset") === id) {
+        li.classList.add("active");
+        li.parentElement.firstElementChild.firstElementChild.firstElementChild.classList.add(
+          "active-svg"
+        );
+      }
+    });
+  };
+};
+handleSecionScrolling();
+
+//animate scroll from link on click
+const animateScroolLink = () => {
+  const links = document.querySelectorAll(".ul-nav li");
+  links.forEach((item) => {
+    item.addEventListener("click", () => {
+      let ele = document.getElementById(item.getAttribute("data-offset"));
+      ele.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+};
+animateScroolLink();
+
+// animate progress bar
+const animationProgressBar = () => {
+  const sectionSkills = document.getElementById("skills"),
+    progressBar = document.querySelectorAll(".progress span");
+
+  const runProgress = () => {
+    progressBar.forEach((ele) => {
+      const value = ele.dataset.progress;
+      ele.style.opacity = 1;
+      ele.style.width = `${value}`;
+    });
+  };
+
+  const stopProgress = () => {
+    progressBar.forEach((ele) => {
+      ele.style.opacity = 0;
+      ele.style.width = "0px";
+    });
+  };
+
+  window.addEventListener("scroll", () => {
+    const scrollPostion = document.documentElement.scrollTop;
+    const secrionSkillsPostion = document.getElementById("skills");
+
+    if (
+      scrollPostion >= secrionSkillsPostion.offsetTop - 500 &&
+      scrollPostion <
+        secrionSkillsPostion.offsetTop + secrionSkillsPostion.offsetHeight
+    ) {
+      runProgress();
+    } else {
+      stopProgress();
+    }
+  });
+};
+animationProgressBar();
+
+// change  theme mode and save in local storge
+const changeTheme = () => {
+  let theme = localStorage.getItem("theme")
+    ? localStorage.getItem("theme")
+    : "light";
+  const body = document.querySelector("body"),
+    containerToggle = document.querySelector(".toggle"),
+    toggle = document.querySelector(".toggle span");
+
+  containerToggle.addEventListener("click", () => {
+    if (body.classList.contains("light")) {
+      body.classList.remove("light");
+      body.classList.add("dark");
+      toggle.style.left = "20px";
+      localStorage.setItem("theme", "dark");
+    } else {
+      body.classList.remove("dark");
+      body.classList.add("light");
+      toggle.style.left = "0px";
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+  if (theme === "light") {
+    body.classList.remove("dark");
+    body.classList.add(theme);
+    toggle.style.left = "0px";
+  } else {
+    body.classList.remove("light");
+    body.classList.add(theme);
+    toggle.style.left = "20px";
+  }
+};
+changeTheme();
+
+// btn Scrolling to top
+const handleClickScrooling = () => {
+  const btnScroll = document.querySelector(".btn-top");
+  window.onscroll = () => {
+    this.scrollY >= 1300
+      ? btnScroll.classList.add("show")
+      : btnScroll.classList.remove("show");
+  };
+  btnScroll.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+};
+handleClickScrooling();
+
+// handle submit data
+const handleFormSubmit = () => {
+  const form = document.getElementById("my-form");
+  async function handleSubmit(event) {
     event.preventDefault();
     var statusError = document.getElementById("error-message");
     var statusResponse = document.getElementById("response-message");
     let data = new FormData(event.target);
     fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-            'Accept': 'application/json'
-        }
-    }).then(response => {
+      method: form.method,
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
         showResponseMessage(statusResponse, statusError);
-        form.reset()
-    }).catch(error => {
+        form.reset();
+      })
+      .catch((error) => {
         showErrorMessage(statusError, statusResponse);
+      });
+  }
+  form.addEventListener("submit", handleSubmit);
 
-    });
-}
-form.addEventListener("submit", handleSubmit)
-
-
-
-function showErrorMessage(statusError, statusResponse) {
+  function showErrorMessage(statusError, statusResponse) {
     statusError.style.display = "block";
     statusResponse.style.display = "none";
-}
-function showResponseMessage(statusResponse, statusError) {
+  }
+  function showResponseMessage(statusResponse, statusError) {
     statusError.style.display = "none";
     statusResponse.style.display = "block";
-
-}
+  }
+};
+handleFormSubmit();
