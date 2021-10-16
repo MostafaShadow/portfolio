@@ -15,18 +15,18 @@
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <!-- style css -->
     <link rel="stylesheet" href="css/style_v1.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Shadow</title>
 </head>
 
-<body class="dark">
-    <!-- loading page -->
-    <div class="loading-container">
-        <div class="loading">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
+<body class="light">
+    <!-- // loader  -->
+    <div class="preloader ">
+      <div class="load">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
     <div class="all-element">
@@ -92,7 +92,7 @@
                                     </path>
                                 </svg>
                             </span>
-                            <li class="active home" data-offset="home">Home</li>
+                            <li class="active home" data-offset="home"> Home</li>
                         </div>
 
                         <div class="icon-parent d-flex flex-row mt-3">
@@ -133,7 +133,7 @@
                             <div class="toggle">
                                 <span></span>
                             </div>
-                            <span>Light Mode</span>
+                            <span>Dark Mode</span>
 
 
                         </div>
@@ -149,10 +149,11 @@
         </header>
 
         <!-- section home  -->
-        <main id="home" class="d-flex flex-column justify-content-center align-items-center">
+        <main id="home" class="section d-flex flex-column justify-content-center align-items-center">
             <div class="home-text">
                 <h1><span>Hello ,</span><br> I'M Mostafa Mohamed</h1>
-                <h2 class="typer" data-text="Front End developer"></h2>
+                <h3>I'M a <span class="typer"></span> </h3>
+                
 
             </div>
             
@@ -506,6 +507,7 @@
             </span>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="js/main_v1.js"></script>
 </body>
 
