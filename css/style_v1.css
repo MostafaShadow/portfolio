@@ -12,7 +12,7 @@ body.dark {
   --picture: #2c2f3f;
   --color-form: rgba(255, 255, 255, 0.7);
   --borderForm: rgba(206, 212, 218, 0.5);
-  --cToggle: #c3b6b6;
+  --cToggle: #2d88ff;
 }
 
 body.light {
@@ -28,8 +28,7 @@ body.light {
   --colorBTop: #596ce8;
   --colorForm: hsl(230deg, 2%, 23%);
   --borderForm: rgba(17, 23, 29, 0.5);
-
-  --cToggle: #2d88ff;
+  --cToggle: #c3b6b6;
 }
 
 * {
@@ -45,43 +44,66 @@ body.light {
 
 body {
   font-family: "Rubik", sans-serif;
-
   color: var(--mainColor);
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
-
-.loading-container {
+.preloader {
+  position: fixed;
+  z-index: 56564;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999999;
-  background-color: #1e202a;
-  overflow-y: hidden !important;
+  inset: 0;
+  background-color: #f7f7f7;
 }
-.loading-container .loading {
+.load {
+  width: 100px;
+  height: 100px;
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
-.loading-container .loading .line {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  border-radius: 15px;
-  background-color: #4b9cdb;
-  margin-left: 10px;
+.load div {
+  border: 0;
+  margin: 0;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  border-radius: 50%;
+  animation: spin 2s ease infinite;
 }
-.loading-container .loading .line:first-child {
-  animation: loading 1s 1s linear infinite;
+
+.load :first-child {
+  background: #19a68c;
+  animation-delay: -1.5s;
 }
-.loading-container .loading .line:nth-child(2) {
-  animation: loading 1s 0.5s linear infinite;
+.load :nth-child(2) {
+  background: #f63d3a;
+  animation-delay: -1s;
 }
-.loading-container .loading .line:last-child {
-  animation: loading 1s 0s linear infinite;
+.load :nth-child(3) {
+  background: #fda543;
+  animation-delay: -0.5s;
+}
+.load :last-child {
+  background: #193b48;
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(160%);
+  }
+  50% {
+    transform: translate(160%, 160%);
+  }
+  75% {
+    transform: translate(0, 160%);
+  }
 }
 
 .bullets-container {
@@ -245,12 +267,16 @@ main .home-text h1 span {
   color: #fdca32;
   font-weight: 800;
 }
-main .home-text h2 {
+main .home-text h3 {
   font-size: 25px;
   font-weight: 400;
   width: fit-content;
   border-bottom: 2px solid #149ddd;
   padding: 4px 0px 4px;
+  display: inline-block;
+}
+main .home-text h3 .typer {
+  color: #ff6f38  !important;
 }
 
 main::after {
@@ -271,7 +297,12 @@ main::after {
   padding: 35px;
   text-transform: capitalize;
 }
-.container-section .skills .lang-skills .other-skills .container-section .projects {
+.container-section
+  .skills
+  .lang-skills
+  .other-skills
+  .container-section
+  .projects {
   overflow: hidden;
 }
 .container-section .skills .lang-skills,
@@ -305,7 +336,9 @@ main::after {
 .container-section .skills .lang-skills .progress,
 .container-section .skills .other-skills .progress {
   background: #dce8f8;
-  height: 10px;
+  height: 14px;
+  border-radius: 4px;
+  overflow: hidden;
 }
 .container-section .skills .lang-skills .progress span,
 .container-section .skills .other-skills .progress span {
@@ -313,6 +346,8 @@ main::after {
   display: block;
   height: 100%;
   background-color: var(--progressColor);
+  transition: width 1.3s linear !important;
+  border-radius: 2px;
 }
 .container-section .projects .my-projects {
   margin-top: 50px;
@@ -381,7 +416,6 @@ main::after {
   font-weight: 200;
   letter-spacing: 2px;
 }
-
 
 .container-section .projects .my-projects:hover::before {
   opacity: 1;
@@ -572,6 +606,10 @@ select:-webkit-autofill:focus {
   text-align: center;
 }
 
+.show {
+  display: block;
+}
+
 .btn-top:hover {
   background: #149ddd;
 }
@@ -625,16 +663,6 @@ body.light .home-text {
   width: 15px;
 }
 
-/* .animation-right {
-  position: relative;
-  right: 120%;
-}
-
-.animation-left {
-  position: relative;
-  left: 120%;
-} */
-
 footer {
   margin-top: 100px;
 }
@@ -676,6 +704,7 @@ footer h6 {
     display: none !important;
   }
 }
+
 @keyframes loading {
   0% {
     height: 25px;
@@ -685,6 +714,13 @@ footer h6 {
   }
   100% {
     height: 25px;
+  }
+}
+
+@keyframes fadeOUtLoading {
+  100% {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
