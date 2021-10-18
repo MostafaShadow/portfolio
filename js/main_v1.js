@@ -1,5 +1,44 @@
 
-// pre loader page
+// animation section in scroll 
+const animationSectionScroll = () => {
+  const srTop = ScrollReveal({
+    origin:'top',
+    distance:'80px',
+    duration:2000,
+    reset:true,
+  });
+  
+  srTop.reveal('.home-text' ,{});
+  srTop.reveal('header' , {intervel:400});
+  
+  
+  const srLeft = ScrollReveal({
+    origin:'left',
+    distance:'80px',
+    duration:2000,
+    reset:true,
+  });
+  srLeft.reveal('#skills' , {});
+  const srRight = ScrollReveal({
+    origin:'right',
+    distance:'80px',
+    duration:2400,
+    reset:true,
+  });
+  srRight.reveal('#projects' , {});
+  const srBottom = ScrollReveal({
+    origin:'bottom',
+    distance:'80px',
+    duration:2000,
+    reset:true,
+  });
+srBottom.reveal('#contact' , {});
+
+  
+}
+animationSectionScroll();
+
+
 const prLoaderPage = () => {
   const preLoader = document.querySelector(".preloader");
   window.addEventListener("load", () => {
@@ -51,7 +90,7 @@ const handleSecionScrolling = () => {
     sections.forEach((section) => {
       // check scroll postion and section postion
       if (
-        scrollPostion >= section.offsetTop - 50 &&
+        scrollPostion >= section.offsetTop - 200 &&
         scrollPostion < section.offsetTop + section.offsetHeight
       ) {
         let cureentId = section.getAttribute("id");
