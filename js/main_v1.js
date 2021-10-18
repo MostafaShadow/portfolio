@@ -1,5 +1,5 @@
 
-// animation section in scroll 
+// animation section in scroll .
 const animationSectionScroll = () => {
   const srTop = ScrollReveal({
     origin:'top',
