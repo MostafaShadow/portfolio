@@ -1,3 +1,4 @@
+
 /*main roles*/
 body.dark {
   --bgH: hsl(214, 67%, 5%);
@@ -13,6 +14,8 @@ body.dark {
   --color-form: rgba(255, 255, 255, 0.7);
   --borderForm: rgba(206, 212, 218, 0.5);
   --cToggle: #2d88ff;
+  --wave :#212431;
+
 }
 
 body.light {
@@ -29,6 +32,7 @@ body.light {
   --colorForm: hsl(230deg, 2%, 23%);
   --borderForm: rgba(17, 23, 29, 0.5);
   --cToggle: #c3b6b6;
+  --wave :#fcf7fc;
 }
 
 * {
@@ -276,7 +280,7 @@ main .home-text h3 {
   display: inline-block;
 }
 main .home-text h3 .typer {
-  color: #ff6f38  !important;
+  color: #f4926d  !important;
 }
 
 main::after {
@@ -286,6 +290,7 @@ main::after {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
 }
+
 
 .container-section {
   margin-left: 300px;
@@ -356,6 +361,7 @@ main::after {
   z-index: 1;
   position: relative;
   cursor: pointer;
+  padding: 25px;
 }
 .container-section .projects .my-projects img {
   width: 100%;
@@ -427,6 +433,33 @@ main::after {
   margin-top: 30px;
   background-color: var(--bgContact);
   box-shadow: 0 0 24px 0 var(--bgContact);
+}
+@media (min-width:1900px) {
+  .container-section .contact  {
+    padding: 50px;
+  }
+  .container-section .contact .cover {
+    height: 900px;
+  }
+  .container-section .contact .cover .info {
+    padding: 100px;
+  }
+  .container-section .contact .cover .info > div{
+    margin-top: 100px !important;
+  }
+  .container-section .contact .info-location h3, .container-section .contact .info-email h3, .container-section .contact .info-call h3 {
+    font-size: 30px !important;
+  }
+  .container-section .contact .info-location span, .container-section .contact .info-email span, .container-section .contact .info-call span {
+    font-size: 20px !important;
+  }
+  .group  {
+    margin-top: 35px !important;
+  }
+ .group label , .container-section .contact form .button span {
+    font-size: 25px !important;
+  }
+ 
 }
 .container-section .contact .cover .info {
   padding: 35px;
@@ -724,4 +757,20 @@ footer h6 {
   }
 }
 
-/*# sourceMappingURL=style.css.map. */
+/*# sourceMappingURL=style.css.map */
+
+/* shape waves */
+
+.custom-shape-divider-bottom-1634556975 {
+  position: absolute;
+  bottom: -29px !important;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+
+.active-wave {
+  fill:var(--wave) !important;
+}
