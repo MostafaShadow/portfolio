@@ -761,15 +761,35 @@ footer h6 {
 
 /* shape waves */
 
-.custom-shape-divider-bottom-1634556975 {
+
+.custom-shape-divider-bottom-1634728936 {
   position: absolute;
-  bottom: -29px !important;
+  bottom: -2%;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
 }
 
+.custom-shape-divider-bottom-1634728936 svg {
+  position: relative;
+  display: block;
+  width: calc(115% + 1.3px);
+  height: 161px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1634728936 .shape-fill {
+  fill: #FFFFFF;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .custom-shape-divider-bottom-1634728936 svg {
+      width: calc(115% + 1.3px);
+      height: 75px;
+  }
+}
 
 .active-wave {
   fill:var(--wave) !important;
