@@ -790,7 +790,6 @@ footer h6 {
       height: 75px;
   }
 }
-
 .active-wave {
   fill:var(--wave) !important;
 }
