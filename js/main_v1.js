@@ -10,6 +10,8 @@ const animationSectionScroll = () => {
   srTop.reveal('.home-text' ,{});
   srTop.reveal('header' , {intervel:400});
   srTop.reveal('#contact' , {});
+  srTop.reveal('#skills' , {});
+
     const srBottom = ScrollReveal({
       origin:'bottom',
       distance:'80px',
@@ -17,28 +19,8 @@ const animationSectionScroll = () => {
       reset:true,
     });
   srBottom.reveal('#projects' , {});
-  srBottom.reveal('#skills' , {});
 
- 
 
-  
-  
-  // const srLeft = ScrollReveal({
-  //   origin:'left',
-  //   distance:'80px',
-  //   duration:2000,
-  //   reset:true,
-  // });
-
-  // const srRight = ScrollReveal({
-  //   origin:'right',
-  //   distance:'80px',
-  //   duration:2400,
-  //   reset:true,
-  // });
-//  
-
-  
 }
 animationSectionScroll();
 
