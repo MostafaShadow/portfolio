@@ -757,39 +757,20 @@ footer h6 {
   }
 }
 
-/*# sourceMappingURL=style.css.map */
 
 /* shape waves */
 
 
-.custom-shape-divider-bottom-1634728936 {
+.custom-shape-divider-bottom-1635633649 {
   position: absolute;
-  bottom: -3%;
+  z-index: 2;
+  bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
 }
 
-.custom-shape-divider-bottom-1634728936 svg {
-  position: relative;
-  display: block;
-  width: calc(115% + 1.3px);
-  height: 161px;
-  transform: rotateY(180deg);
-}
-
-.custom-shape-divider-bottom-1634728936 .shape-fill {
-  fill: #FFFFFF;
-}
-
-/** For mobile devices **/
-@media (max-width: 767px) {
-  .custom-shape-divider-bottom-1634728936 svg {
-      width: calc(115% + 1.3px);
-      height: 75px;
-  }
-}
 .active-wave {
-  fill:var(--wave) !important;
+  fill:var(--bgBody) !important;
 }
