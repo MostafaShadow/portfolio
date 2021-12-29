@@ -1,29 +1,26 @@
-// animation section in scroll 
+// animation section in scroll
 const animationSectionScroll = () => {
   const srTop = ScrollReveal({
-    origin:'top',
-    distance:'80px',
-    duration:2000,
-    reset:true,
+    origin: "top",
+    distance: "80px",
+    duration: 2000,
+    reset: false,
   });
-  
-  srTop.reveal('.home-text' ,{});
-  srTop.reveal('header' , {intervel:400});
-  srTop.reveal('#contact' , {});
-  srTop.reveal('#skills' , {});
 
-    const srBottom = ScrollReveal({
-      origin:'bottom',
-      distance:'80px',
-      duration:2000,
-      reset:true,
-    });
-  srBottom.reveal('#projects' , {});
+  srTop.reveal(".home-text", {});
+  srTop.reveal("header", { intervel: 400 });
+  srTop.reveal("#contact", {});
+  srTop.reveal("#skills", {});
 
-
-}
+  const srBottom = ScrollReveal({
+    origin: "bottom",
+    distance: "80px",
+    duration: 2000,
+    reset: false,
+  });
+  srBottom.reveal("#projects", {});
+};
 animationSectionScroll();
-
 
 const prLoaderPage = () => {
   const preLoader = document.querySelector(".preloader");
@@ -33,12 +30,12 @@ const prLoaderPage = () => {
 };
 prLoaderPage();
 
-// typed js 
-let typed = new Typed('.typer', {
-  strings: ['Front End Developer.' , 'Freelancer.'],
-  typeSpeed:50,
-  backSpeed:40,
-  loop:true
+// typed js
+let typed = new Typed(".typer", {
+  strings: ["Front End Developer.", "Freelancer."],
+  typeSpeed: 50,
+  backSpeed: 40,
+  loop: true,
 });
 
 // show list icon  sidebar in mobile
@@ -167,18 +164,25 @@ const changeTheme = () => {
     : "light";
   const body = document.querySelector("body"),
     containerToggle = document.querySelector(".toggle"),
-    toggle = document.querySelector(".toggle span");
+    toggle = document.querySelector(".toggle span i");
+
+  window.addEventListener("load", () => {
+    if (body.classList.contains("light")) {
+      toggle.classList.add("bx-moon");
+    } else {
+      toggle.classList.add("bx-sun")
+    }
+  });
 
   containerToggle.addEventListener("click", () => {
     if (body.classList.contains("light")) {
-      body.classList.remove("light");
-      body.classList.add("dark");
-      toggle.style.left = "20px";
+      body.classList.replace("light", "dark");
+      body.classList.replace("light", "dark");
+      toggle.classList.replace("bx-moon", "bx-sun");
       localStorage.setItem("theme", "dark");
     } else {
-      body.classList.remove("dark");
-      body.classList.add("light");
-      toggle.style.left = "0px";
+      body.classList.replace("dark", "light");
+      toggle.classList.replace("bx-sun", "bx-moon");
       localStorage.setItem("theme", "light");
     }
   });
