@@ -1,38 +1,28 @@
-
 /*main roles*/
-body.dark {
-  --bgH: hsl(214, 67%, 5%);
-  --bgBody: #212431;
-  --mainColor: hsl(0, 0%, 100%);
-  --bgHover: #c38fff;
-  --subColor: #bbb6b6;
-  --progressColor: #03dac6;
-  --webHover: rgba(33, 36, 49, 0.8);
-  --colorBTop: rgba(235, 0, 93, 0.7);
-  --bgContact: #1e1e1e;
-  --picture: #2c2f3f;
-  --color-form: rgba(255, 255, 255, 0.7);
-  --borderForm: rgba(206, 212, 218, 0.5);
-  --cToggle: #2d88ff;
-  --wave :#212431;
 
+body.dark {
+  --MainColor: #ddd;
+  --BgColor: #0a1929;
+  --LineColor: rgb(37, 36, 36);
+  --ActiveColor: #01a5f0;
+  --BtnBG: linear-gradient(-90deg, #1ab3ff, #1aa3ff);
+  --progressColor: #03dac6;
+  --wave: #212431;
+  --BoxShadow:0 2px 6px 0 rgb(0 0 0 / 5%), 0 0 3px 0 rgb(0 0 0 / 10%);
+  --SkillsBg : rgba(255, 255, 255, 0.11);
 }
 
 body.light {
-  --bgH: #efe9ef;
-  --bgBody: #fcf7fc;
-  --mainColor: #1e202a;
-  --bgHover: #149ddd;
-  --subColor: #000;
+  --MainColor: #111;
+  --BgColor: #fff;
+  --LineColor: #ddddddd4;
+  --ActiveColor: #01a5f0;
+  --BtnBG: linear-gradient(-90deg, #1aa5ff, #1a72ff);
   --progressColor: #0a8ecc;
-  --webHover: rgba(255, 255, 255, 0.6);
-  --bgContact: #efe9ef;
-  --picture: #dce8f8;
-  --colorBTop: #596ce8;
-  --colorForm: hsl(230deg, 2%, 23%);
-  --borderForm: rgba(17, 23, 29, 0.5);
-  --cToggle: #c3b6b6;
-  --wave :#fcf7fc;
+  --wave: #fcf7fc;
+  --BoxShadow:0 2px 6px 0 rgb(0 0 0 / 5%), 0 0 3px 0 rgb(0 0 0 / 10%);
+  --SkillsBg : #fff;
+
 }
 
 * {
@@ -45,10 +35,12 @@ body.light {
 ::after {
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Rubik", sans-serif;
-  color: var(--mainColor);
+  color: var(--MainColor);
   overflow-x: hidden !important;
 }
 .preloader {
@@ -145,7 +137,8 @@ header {
   bottom: 0;
   width: 300px;
   z-index: 9999;
-  background-color: var(--bgH);
+  background-color: var(--BgColor);
+  border-right: 1px solid var(--LineColor);
 }
 header .picture-parent {
   position: relative;
@@ -183,7 +176,7 @@ header .name span.check {
 }
 header .social-links a {
   display: inline-block;
-  background: var(--bgBody);
+  background: var(--BgColor);
   padding: 7px 0;
   border-radius: 50%;
   text-align: center;
@@ -193,11 +186,11 @@ header .social-links a {
   margin-right: 15px;
 }
 header .social-links a path {
-  fill: var(--mainColor);
+  fill: var(--MainColor);
   transition: 0.5s;
 }
 header .social-links a:hover {
-  background-color: var(--bgHover);
+  background-color: var(--ActiveColor);
   transition: 0.5s;
 }
 header .social-links a:hover path {
@@ -206,18 +199,21 @@ header .social-links a:hover path {
 }
 header nav ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 header nav ul .icon-parent {
-  width: 200px;
+  width: 120px;
 }
 header nav ul .icon-parent span {
   display: block;
 }
 header nav ul .icon-parent span path {
-  fill: var(--subColor);
+  fill: var(--MainColor);
 }
 header nav ul .icon-parent li {
-  color: var(--subColor);
+  color: var(--MainColor);
   display: block;
   cursor: pointer;
   font-weight: 400;
@@ -225,22 +221,22 @@ header nav ul .icon-parent li {
   margin-left: 15px;
 }
 header .btn .toggle {
-  background-color: var(--cToggle);
-  width: 41px;
-  height: 20px;
-  position: relative;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
-  margin-right: 10px;
+  box-shadow: 0 2px 6px 0 rgb(0 0 0 / 5%), 0 0 3px 0 rgb(0 0 0 / 10%);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.11);
 }
 header .btn .toggle span {
   display: block;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  position: absolute;
-  top: 2%;
-  background: #fff;
+  font-size: 25px;
 }
 header .btn span {
   font-size: 16px;
@@ -268,7 +264,6 @@ main .home-text h1 {
 main .home-text h1 span {
   font-size: 30px;
   font-style: italic;
-  color: #fdca32;
   font-weight: 800;
 }
 main .home-text h3 {
@@ -280,7 +275,7 @@ main .home-text h3 {
   display: inline-block;
 }
 main .home-text h3 .typer {
-  color: #ffcbc1  !important;
+  color: var(--ActiveColor) !important;
 }
 
 main::after {
@@ -291,10 +286,9 @@ main::after {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-
 .container-section {
   margin-left: 300px;
-  background-color: var(--bgBody);
+  background-color: var(--BgColor);
 }
 
 .container-section .projects,
@@ -310,98 +304,78 @@ main::after {
   .projects {
   overflow: hidden;
 }
-.container-section .skills .lang-skills,
-.container-section .skills .other-skills {
-  margin-top: 40px;
+.container-section .skills{
   padding: 15px;
   text-transform: uppercase;
   margin-bottom: 30px;
 }
-.container-section .skills .lang-skills h4,
-.container-section .skills .other-skills h4 {
-  font-size: 20px;
+
+.container-section .skills .tec-skills {
+  border-radius: 10px;
+  box-shadow: var(--BoxShadow);
+  background-color: var(--SkillsBg);
+  padding: 10px;
+  width: 150px;
+  margin: 10px auto;
+
 }
-.container-section .skills .lang-skills h4 i,
-.container-section .skills .other-skills h4 i {
-  display: inline-block;
-  position: relative;
+
+.container-section .skills .tec-skills img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5px;
 }
-.container-section .skills .lang-skills h4 i svg,
-.container-section .skills .other-skills h4 i svg {
-  position: absolute;
-  display: inline-block;
-  top: -25px;
-  left: 6px;
-}
-.container-section .skills .lang-skills span:first-of-type,
-.container-section .skills .other-skills span:first-of-type {
-  text-align: right;
-  display: inherit;
-}
-.container-section .skills .lang-skills .progress,
-.container-section .skills .other-skills .progress {
-  background: #dce8f8;
-  height: 14px;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.container-section .skills .lang-skills .progress span,
-.container-section .skills .other-skills .progress span {
-  width: 0;
-  display: block;
-  height: 100%;
-  background-color: var(--progressColor);
-  transition: width 1.3s linear !important;
-  border-radius: 2px;
-}
+
+
 .container-section .projects .my-projects {
   margin-top: 50px;
-  transition: 0.1s;
   overflow: hidden;
   z-index: 1;
-  position: relative;
-  cursor: pointer;
-  padding: 25px;
+  padding: 10px;
+  border: 1px solid var(--LineColor);
+  box-shadow: var(--BoxShadow);
+  border-radius: 2px;
 }
+
 .container-section .projects .my-projects img {
   width: 100%;
   height: auto;
   display: block;
-  transform: scale(1.2);
+  object-fit: contain;
+  border-radius: 6px;
+  margin-top: 5px;
 }
 .container-section .projects .my-projects .links {
   width: 100%;
-  height: 0%;
   font-size: 28px;
-  text-align: center;
-  background: #000000bf;
-  transition: 0.5s;
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  z-index: 44;
-  overflow: hidden;
 }
-.container-section .projects .my-projects:hover .links {
-  transition: 0.5s;
-  height: 100% !important;
-}
+
 .container-section .projects .my-projects .links .area {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100%;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+body.dark.container-section .projects .my-projects .links .area {
   color: #fff;
+}
+
+body.light.container-section .projects .my-projects .links .area {
+  color: #111;
 }
 .container-section .projects .my-projects .links .area .btn-links {
   display: block;
   width: 120px;
-  background-color: tomato;
-  border-radius: 7px;
+  background-image: var(--BtnBG);
+  color: #fff;
+  border-radius: 10px;
   transition: 0.3s;
-  padding: 5px;
+  padding: 15px 10px;
+  text-align: center;
+  margin-top: 30px;
 }
 
 .container-section .projects .my-projects .links .area .btn-links a {
@@ -413,29 +387,30 @@ main::after {
   color: inherit;
 }
 .container-section .projects .my-projects .links .area .btn-links:hover {
-  background-color: #ca3c23;
-  transition: 0.3s;
+  transition: all 200ms ease-in-out;
+  background-color: var(--ActiveColor);
+  background-image: linear-gradient(-90deg, #13a4ec, #1a9ef6);
 }
 .container-section .projects .my-projects .links .area h5 {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 200;
   letter-spacing: 2px;
+  line-height: 1.7;
 }
 
-.container-section .projects .my-projects:hover::before {
-  opacity: 1;
-}
 .container-section .contact {
   padding: 35px;
 }
 .container-section .contact .cover {
-  margin-top: 30px;
-  background-color: var(--bgContact);
-  box-shadow: 0 0 24px 0 var(--bgContact);
+  background-color: var(--BgColor);
+  box-shadow: 0 0 24px 0 var(--BgColor);
+  border-radius: 10px;
+  border: 1px solid var(--LineColor);
+  margin-top: 40px;
 }
-@media (min-width:1900px) {
-  .container-section .contact  {
+@media (min-width: 1900px) {
+  .container-section .contact {
     padding: 50px;
   }
   .container-section .contact .cover {
@@ -444,22 +419,26 @@ main::after {
   .container-section .contact .cover .info {
     padding: 100px;
   }
-  .container-section .contact .cover .info > div{
+  .container-section .contact .cover .info > div {
     margin-top: 100px !important;
   }
-  .container-section .contact .info-location h3, .container-section .contact .info-email h3, .container-section .contact .info-call h3 {
+  .container-section .contact .info-location h3,
+  .container-section .contact .info-email h3,
+  .container-section .contact .info-call h3 {
     font-size: 30px !important;
   }
-  .container-section .contact .info-location span, .container-section .contact .info-email span, .container-section .contact .info-call span {
+  .container-section .contact .info-location span,
+  .container-section .contact .info-email span,
+  .container-section .contact .info-call span {
     font-size: 20px !important;
   }
-  .group  {
+  .group {
     margin-top: 35px !important;
   }
- .group label , .container-section .contact form .button span {
+  .group label,
+  .container-section .contact form .button .submit {
     font-size: 25px !important;
   }
- 
 }
 .container-section .contact .cover .info {
   padding: 35px;
@@ -469,7 +448,7 @@ main::after {
   height: 44px;
   border-radius: 50%;
   position: relative;
-  background-color: var(--bgBody);
+  background-color: var(--BgColor);
   margin-bottom: 10px;
   transition: 0.5s;
 }
@@ -482,11 +461,11 @@ main::after {
   transition: 0.4s;
 }
 .container-section .contact .cover .icon span path {
-  fill: var(--mainColor);
+  fill: var(--MainColor);
   transition: 0.5s;
 }
 .container-section .contact .cover .icon:hover {
-  background-color: var(--bgHover);
+  background-color: var(--ActiveColor);
   transition: 0.5s;
 }
 .container-section .contact .cover .icon:hover span path {
@@ -511,13 +490,15 @@ main::after {
 }
 .container-section .contact form {
   padding: 70px;
-  color: var(--colorForm);
+  color: var(--MainColor);
   margin-top: 30px;
   display: block;
   width: 100%;
   font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.5;
+  box-shadow: var(--BoxShadow);
+
 }
 .container-section .contact form input {
   background-color: inherit;
@@ -527,7 +508,7 @@ main::after {
   margin-bottom: 15px;
   border: none;
   border-bottom: 1px solid;
-  color: var(--mainColor);
+  color: var(--MainColor);
   font-size: 16px;
   padding-left: 10px;
   opacity: 0.8;
@@ -552,7 +533,7 @@ select:-webkit-autofill:focus {
 .container-section .contact form textarea:focus {
   outline: none;
   border-bottom: 1px solid;
-  border-bottom-color: var(--borderForm);
+  border-bottom-color: var(--LineColor);
 }
 .container-section .contact form textarea {
   display: block;
@@ -561,11 +542,11 @@ select:-webkit-autofill:focus {
   font-weight: 400;
   border: none;
   border-bottom: 1px solid;
-  border-color: var(--borderForm);
+  border-color: var(--LineColor);
   padding: 15px;
   height: 155px;
   background-color: inherit;
-  color: var(--mainColor);
+  color: var(--MainColor);
   resize: none;
   overflow-y: hidden;
 }
@@ -607,16 +588,14 @@ select:-webkit-autofill:focus {
   color: inherit;
   margin: 0 auto;
 }
-.container-section .contact form .button span {
-  font-size: 20px;
-  display: block;
-}
-.container-section .contact form .button button {
-  outline: none;
-  border: none;
-  background-color: transparent;
+.container-section .contact form .button .submit {
+  border: 1px solid var(--ActiveColor);
+  padding: 15px 10px;
+  width: 200px;
+  border-radius: 10px;
+  background-image: var(--BtnBG);
+  color: #fff !important;
   cursor: pointer;
-  margin-top: 5px;
 }
 
 .btn-top {
@@ -627,11 +606,11 @@ select:-webkit-autofill:focus {
   bottom: 7%;
   right: 15px;
   z-index: 99;
-  background: #2d88ff;
+  background-image: var(--BtnBG);
   border-radius: 50%;
   padding: 5px;
   cursor: pointer;
-  transition: 0.5s;
+  transition: all 300ms ease-in-out;
   display: none;
 }
 .btn-top span {
@@ -644,7 +623,7 @@ select:-webkit-autofill:focus {
 }
 
 .btn-top:hover {
-  background: #149ddd;
+  background-image: linear-gradient(-90deg, #009ceb, #38affd);
 }
 
 body.light .home-text {
@@ -652,11 +631,11 @@ body.light .home-text {
 }
 
 .active-svg {
-  fill: var(--bgHover) !important;
+  fill: var(--ActiveColor) !important;
 }
 
 .active {
-  color: var(--mainColor) !important;
+  color: var(--MainColor) !important;
 }
 
 .section-h2 {
@@ -668,10 +647,10 @@ body.light .home-text {
 .section-h2::after {
   content: "";
   position: absolute;
-  top: 70px;
-  left: 1px;
+  top: 50px;
+  left: 6px;
   width: 80px;
-  background-color: var(--bgHover);
+  background-color: var(--ActiveColor);
   height: 2px;
   margin-bottom: 20px;
 }
@@ -697,13 +676,14 @@ body.light .home-text {
 }
 
 footer {
-  margin-top: 100px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  text-align: center;
 }
 footer h6 {
   font-size: 13px;
   letter-spacing: 3px;
-  text-align: center;
-  margin-left: -80px;
 }
 
 @media (min-width: 350px) and (max-width: 700px) {
@@ -757,9 +737,7 @@ footer h6 {
   }
 }
 
-
 /* shape waves */
-
 
 .custom-shape-divider-bottom-1635633649 {
   position: absolute;
@@ -772,5 +750,5 @@ footer h6 {
 }
 
 .active-wave {
-  fill:var(--bgBody) !important;
+  fill: var(--BgColor) !important;
 }
