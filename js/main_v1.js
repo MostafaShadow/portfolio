@@ -190,11 +190,9 @@ const changeTheme = () => {
   if (theme === "light") {
     body.classList.remove("dark");
     body.classList.add(theme);
-    toggle.style.left = "0px";
   } else {
     body.classList.remove("light");
     body.classList.add(theme);
-    toggle.style.left = "20px";
   }
 };
 changeTheme();
