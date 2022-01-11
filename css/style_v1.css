@@ -8,8 +8,8 @@ body.dark {
   --BtnBG: linear-gradient(-90deg, #1ab3ff, #1aa3ff);
   --progressColor: #03dac6;
   --wave: #212431;
-  --BoxShadow:0 2px 6px 0 rgb(0 0 0 / 5%), 0 0 3px 0 rgb(0 0 0 / 10%);
-  --SkillsBg : rgba(255, 255, 255, 0.11);
+  --BoxShadow: 0 2px 6px 0 rgb(0 0 0 / 5%), 0 0 3px 0 rgb(0 0 0 / 10%);
+  --SkillsBg: rgba(255, 255, 255, 0.11);
 }
 
 body.light {
@@ -20,9 +20,8 @@ body.light {
   --BtnBG: linear-gradient(-90deg, #1aa5ff, #1a72ff);
   --progressColor: #0a8ecc;
   --wave: #fcf7fc;
-  --BoxShadow:0 2px 6px 0 rgb(0 0 0 / 5%), 0 0 3px 0 rgb(0 0 0 / 10%);
-  --SkillsBg : #fff;
-
+  --BoxShadow: 0 2px 6px 0 rgb(0 0 0 / 5%), 0 0 3px 0 rgb(0 0 0 / 10%);
+  --SkillsBg: #fff;
 }
 
 * {
@@ -237,8 +236,7 @@ header .btn .toggle span {
   width: 20px;
   height: 20px;
   font-size: 25px;
-    margin-left: -5px;
-
+  margin-left: -5px;
 }
 header .btn span {
   font-size: 16px;
@@ -306,7 +304,7 @@ main::after {
   .projects {
   overflow: hidden;
 }
-.container-section .skills{
+.container-section .skills {
   padding: 15px;
   text-transform: uppercase;
   margin-bottom: 30px;
@@ -316,18 +314,28 @@ main::after {
   border-radius: 10px;
   box-shadow: var(--BoxShadow);
   background-color: var(--SkillsBg);
-  padding: 10px;
-  width: 150px;
-  margin: 10px auto;
-
+  padding: 15px 10px;
+  margin: 10px 5px;
+  flex: 1;
+  min-width: 150px;
+  cursor: pointer;
+  transition: all 100ms ease-in-out;
+}
+.container-section .skills .tec-skills:hover {
+  color: #13a4ec;
 }
 
 .container-section .skills .tec-skills img {
-  width: 100px;
-  height: 100px;
+  max-width: 70px;
+  max-height: 70px;
   margin-bottom: 5px;
+  object-fit: cover;
 }
 
+.container-section .skills .tec-skills h3 {
+  margin-top: 15px;
+  white-space: nowrap;
+}
 
 .container-section .projects .my-projects {
   margin-top: 50px;
@@ -500,7 +508,6 @@ body.light.container-section .projects .my-projects .links .area {
   font-weight: 400;
   line-height: 1.5;
   box-shadow: var(--BoxShadow);
-
 }
 .container-section .contact form input {
   background-color: inherit;
