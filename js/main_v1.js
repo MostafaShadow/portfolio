@@ -32,7 +32,7 @@ prLoaderPage();
 
 // typed js
 let typed = new Typed(".typer", {
-  strings: ["Front End Developer.", "Freelancer."],
+  strings: ["Full Stack Developer.", "Creator.", "Freelancer."],
   typeSpeed: 50,
   backSpeed: 40,
   loop: true,
@@ -170,7 +170,7 @@ const changeTheme = () => {
     if (body.classList.contains("light")) {
       toggle.classList.add("bx-moon");
     } else {
-      toggle.classList.add("bx-sun")
+      toggle.classList.add("bx-sun");
     }
   });
 
